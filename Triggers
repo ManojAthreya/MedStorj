@@ -1,0 +1,28 @@
+DROP TRIGGER IF EXISTS `after_patient_delete`;
+DELIMITER $$
+CREATE TRIGGER `after_patient_delete` AFTER DELETE ON `patientrecords` FOR EACH ROW BEGIN
+
+    INSERT INTO p2
+
+    SET action_performed  = 'Deleted a patient',
+
+    patient_name       =  OLD.Name;
+
+
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `after_patient_edit`;
+DELIMITER $$
+CREATE TRIGGER `after_patient_edit` AFTER UPDATE ON `patientrecords` FOR EACH ROW BEGIN
+
+    INSERT INTO p1
+
+    SET action_performed  = 'Updated Patient',
+
+    Name       =  OLD.Name;
+
+
+END
+$$
+DELIMITER ; 
