@@ -1,0 +1,17 @@
+DELIMITER $$
+--
+-- Procedures
+--
+DROP PROCEDURE IF EXISTS `GetPatients`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPatients` ()  BEGIN
+ SELECT Id,Name,Phone,Doctor,Date,Time
+ FROM patientdetails;
+    END$$
+
+DROP PROCEDURE IF EXISTS `medicine_call`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `medicine_call` ()  BEGIN
+ SELECT Id,Medicine,Stock,Message
+ FROM medicines;
+    END$$
+
+DELIMITER ;
